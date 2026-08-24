@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAIREN — Sistemas digitales a la medida</title>
-  <meta name="description" content="KAIREN diseña sistemas digitales, automatizaciones y aplicaciones a la medida de negocios reales." />
+  <title>KAIREN — Software y automatización a la medida</title>
+  <meta name="description" content="KAIREN diseña software, automatizaciones y sistemas digitales a la medida para negocios reales." />
 
   <style>
     :root{
@@ -741,7 +741,80 @@
       .footer-inner{align-items:flex-start;flex-direction:column}
       .nav-inner{height:68px}
     }
+
+    .case-link{border:0;padding:0;background:transparent;color:var(--accent-strong);font:inherit;font-weight:650;cursor:pointer}
+    .case-link:hover{text-decoration:underline;text-underline-offset:4px}
+
+    .about-card{
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:64px 0;display:grid;grid-template-columns:.75fr 1.25fr;
+      gap:70px;align-items:start
+    }
+    .about-label{color:var(--accent-strong);text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:700}
+    .about-card h3{
+      font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4vw,52px);
+      line-height:1.08;letter-spacing:-.03em;font-weight:500;margin:0 0 18px
+    }
+    .about-card p{margin:0;max-width:680px;color:var(--muted);font-size:17px;line-height:1.75}
+
+    .contact-note{margin-top:18px;color:var(--muted);font-size:13px}
+
+    .whatsapp-float{
+      position:fixed;right:22px;bottom:22px;z-index:45;width:52px;height:52px;
+      border-radius:50%;background:#fff;border:1px solid var(--line);
+      box-shadow:0 16px 40px rgba(20,28,22,.12);display:flex;align-items:center;
+      justify-content:center;font-size:18px;font-weight:700;transition:.2s ease
+    }
+    .whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(20,28,22,.16)}
+
+    .case-modal{
+      position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+      padding:24px;background:rgba(20,24,20,.24);backdrop-filter:blur(10px)
+    }
+    .case-modal.open{display:flex}
+    .case-panel{
+      width:min(920px,100%);max-height:88vh;overflow:auto;background:var(--surface);
+      border:1px solid var(--line);border-radius:30px;box-shadow:0 30px 100px rgba(20,28,22,.18)
+    }
+    .case-header{
+      display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+      padding:30px 32px 24px;border-bottom:1px solid var(--line)
+    }
+    .case-header .tag{margin-bottom:12px}
+    .case-header h3{
+      font-family:Georgia,"Times New Roman",serif;font-size:42px;line-height:1;
+      letter-spacing:-.035em;font-weight:500;margin:0
+    }
+    .case-close{
+      width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+      background:#fff;cursor:pointer;font-size:20px;color:#555
+    }
+    .case-content{padding:30px 32px 34px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .case-block{padding:22px 0;border-bottom:1px solid var(--line)}
+    .case-block.full{grid-column:1 / -1}
+    .case-kicker{
+      color:var(--accent-strong);text-transform:uppercase;letter-spacing:.1em;
+      font-size:11px;font-weight:700;margin-bottom:9px
+    }
+    .case-block p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}
+    .case-list{margin:0;padding-left:18px;color:var(--muted);line-height:1.8;font-size:15px}
+    body.modal-open{overflow:hidden}
+
+    @media (max-width:760px){
+      .about-card{grid-template-columns:1fr;gap:22px;padding:44px 0}
+      .case-content{grid-template-columns:1fr;padding:24px}
+      .case-block.full{grid-column:auto}
+      .case-header{padding:24px}
+      .case-header h3{font-size:34px}
+      .whatsapp-float{right:14px;bottom:14px}
+    }
+
   </style>
+  <meta property="og:title" content="KAIREN — Software y automatización a la medida" />
+  <meta property="og:description" content="Sistemas digitales diseñados alrededor de procesos reales. Conoce proyectos de KAIREN." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kairenportafolio.vercel.app/" />
+  <meta name="theme-color" content="#fbfbf8" />
 </head>
 
 <body>
@@ -783,7 +856,7 @@
         <div class="section-head reveal">
           <div>
             <div class="section-kicker">Trabajo seleccionado</div>
-            <h2>Proyectos terminados.</h2>
+            <h2>Soluciones que ya están funcionando.</h2>
           </div>
 
           <p class="section-desc">
@@ -827,7 +900,7 @@
                 <span class="chip">Dashboard</span>
               </div>
 
-              <div class="project-link">Sistema diseñado alrededor de la operación real →</div>
+              <div class="project-link"><button class="case-link" data-case="patitas">Ver caso →</button></div>
             </div>
           </article>
 
@@ -862,7 +935,7 @@
                 <span class="chip">Funciones</span>
               </div>
 
-              <div class="project-link">Automatización sin perder la atención personal →</div>
+              <div class="project-link"><button class="case-link" data-case="divina">Ver caso →</button></div>
             </div>
           </article>
 
@@ -887,7 +960,7 @@
 
               <h3>Kairen Finanzas</h3>
               <p>
-                Aplicación personal para registrar movimientos, controlar presupuestos,
+                Aplicación de finanzas personales para registrar movimientos, controlar presupuestos,
                 administrar metas y entender mejor el comportamiento del dinero.
               </p>
 
@@ -899,7 +972,7 @@
                 <span class="chip">PWA / Android</span>
               </div>
 
-              <div class="project-link">Todo en orden en el momento correcto →</div>
+              <div class="project-link"><button class="case-link" data-case="finanzas">Ver caso →</button></div>
             </div>
           </article>
 
@@ -936,7 +1009,7 @@
                 <span class="chip">Quitar fondo</span>
               </div>
 
-              <div class="project-link">Herramientas de archivos en un solo lugar →</div>
+              <div class="project-link"><button class="case-link" data-case="organizador">Ver caso →</button></div>
             </div>
           </article>
 
@@ -990,7 +1063,24 @@
       </div>
     </section>
 
-    <section class="section" id="servicios">
+    
+    <section class="section" id="sobre-kairen">
+      <div class="wrap reveal">
+        <div class="about-card">
+          <div class="about-label">Sobre KAIREN</div>
+          <div>
+            <h3>Software diseñado alrededor de procesos reales.</h3>
+            <p>
+              KAIREN crea herramientas digitales a la medida: desde automatizaciones por WhatsApp
+              hasta sistemas completos de operación y aplicaciones. Primero entendemos el proceso;
+              después construimos solo lo que realmente necesita el proyecto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="servicios">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
@@ -1040,6 +1130,7 @@
         <a class="btn btn-primary" href="https://wa.me/525574368966" target="_blank" rel="noopener">
           Hablemos de tu proyecto →
         </a>
+        <div class="contact-note">Proyectos remotos y presenciales · Atención directa por WhatsApp</div>
       </div>
     </section>
   </main>
@@ -1065,6 +1156,93 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  
+    const caseStudies = {
+      patitas: {
+        title: "Patitas Suites",
+        tag: "Proyecto para cliente",
+        problem: "La operación de una guardería y hotel canino requiere controlar clientes, mascotas, paquetes, entradas, salidas, pagos y comunicación desde varios puntos del negocio.",
+        solution: "KAIREN centralizó esos procesos en un sistema operativo pensado alrededor del flujo real de Patitas Suites.",
+        built: ["Reservas y atención mediante WhatsApp","Identificación y acceso mediante QR","Registro de entradas y salidas","Control de días y paquetes","Dashboard operativo","Registro de compras y pagos"],
+        result: "El negocio cuenta con un flujo digital más ordenado para consultar información, registrar movimientos y dar seguimiento a la operación diaria desde una misma solución."
+      },
+      divina: {
+        title: "La Divina Comedia",
+        tag: "Proyecto para cliente",
+        problem: "La venta de boletos por mensajes puede convertirse rápidamente en un proceso manual: responder disponibilidad, calcular totales, registrar reservas, explicar pagos y confirmar cada compra.",
+        solution: "Se creó un flujo automatizado por WhatsApp que acompaña al asistente desde la selección de función hasta la confirmación de su boleto.",
+        built: ["Selección de funciones y horarios","Cálculo automático de boletos y total","Reservación pre-confirmada","Instrucciones de pago","Confirmación y boleto digital","Transferencia a atención humana cuando se requiere"],
+        result: "El proceso de reservación puede avanzar de forma estructurada y automática sin eliminar la posibilidad de atención personal."
+      },
+      finanzas: {
+        title: "Kairen Finanzas",
+        tag: "Producto KAIREN",
+        problem: "Registrar movimientos no es suficiente si la información termina dispersa y no permite entender de manera sencilla cómo se está utilizando el dinero.",
+        solution: "Kairen Finanzas reúne movimientos, cuentas, presupuestos, metas y reportes en una experiencia pensada para el seguimiento financiero personal.",
+        built: ["Registro de ingresos y gastos","Cuentas y saldos","Presupuestos","Metas financieras","Movimientos recurrentes","Reportes y análisis","Experiencia web y Android"],
+        result: "Una sola aplicación permite registrar, consultar y analizar la información financiera personal con una estructura consistente."
+      },
+      organizador: {
+        title: "Kairen Organizador",
+        tag: "Producto KAIREN",
+        problem: "Tareas frecuentes con archivos suelen requerir diferentes páginas o herramientas: renombrar, convertir imágenes, modificar PDFs, comprimir o eliminar fondos.",
+        solution: "Kairen Organizador concentra utilidades de archivos dentro de una misma experiencia web simple y directa.",
+        built: ["Renombrado de archivos","Conversión de imágenes","Unir y separar PDFs","Compresión de documentos","Eliminar fondos","Herramientas de procesamiento de archivos"],
+        result: "Las operaciones comunes con archivos quedan centralizadas en un único lugar, reduciendo la necesidad de cambiar constantemente entre herramientas."
+      }
+    };
+
+    const modal = document.getElementById("caseModal");
+    const modalTitle = document.getElementById("caseTitle");
+    const modalTag = document.getElementById("caseTag");
+    const modalContent = document.getElementById("caseContent");
+    const modalClose = document.getElementById("caseClose");
+
+    function openCase(key){
+      const item = caseStudies[key];
+      if(!item) return;
+      modalTitle.textContent = item.title;
+      modalTag.textContent = item.tag;
+      modalContent.innerHTML = `
+        <div class="case-block"><div class="case-kicker">El problema</div><p>${item.problem}</p></div>
+        <div class="case-block"><div class="case-kicker">La solución</div><p>${item.solution}</p></div>
+        <div class="case-block full"><div class="case-kicker">Qué construimos</div><ul class="case-list">${item.built.map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <div class="case-block full"><div class="case-kicker">Resultado</div><p>${item.result}</p></div>
+      `;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeCase(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      document.body.classList.remove("modal-open");
+    }
+
+    document.querySelectorAll(".case-link").forEach(btn => {
+      btn.addEventListener("click", () => openCase(btn.dataset.case));
+    });
+    modalClose.addEventListener("click", closeCase);
+    modal.addEventListener("click", e => { if(e.target === modal) closeCase(); });
+    document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.classList.contains("open")) closeCase(); });
+
   </script>
+
+  <a class="whatsapp-float" href="https://wa.me/525574368966" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
+
+  <div class="case-modal" id="caseModal" aria-hidden="true">
+    <div class="case-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
+      <div class="case-header">
+        <div>
+          <div class="tag" id="caseTag">Caso KAIREN</div>
+          <h3 id="caseTitle">Proyecto</h3>
+        </div>
+        <button class="case-close" id="caseClose" aria-label="Cerrar">×</button>
+      </div>
+      <div class="case-content" id="caseContent"></div>
+    </div>
+  </div>
+
 </body>
 </html>
