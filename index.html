@@ -1143,6 +1143,21 @@
     </div>
   </footer>
 
+  <a class="whatsapp-float" href="https://wa.me/525574368966" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
+
+  <div class="case-modal" id="caseModal" aria-hidden="true">
+    <div class="case-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
+      <div class="case-header">
+        <div>
+          <div class="tag" id="caseTag">Caso KAIREN</div>
+          <h3 id="caseTitle">Proyecto</h3>
+        </div>
+        <button class="case-close" id="caseClose" aria-label="Cerrar">×</button>
+      </div>
+      <div class="case-content" id="caseContent"></div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1228,21 +1243,6 @@
     document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.classList.contains("open")) closeCase(); });
 
   </script>
-
-  <a class="whatsapp-float" href="https://wa.me/525574368966" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
-
-  <div class="case-modal" id="caseModal" aria-hidden="true">
-    <div class="case-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
-      <div class="case-header">
-        <div>
-          <div class="tag" id="caseTag">Caso KAIREN</div>
-          <h3 id="caseTitle">Proyecto</h3>
-        </div>
-        <button class="case-close" id="caseClose" aria-label="Cerrar">×</button>
-      </div>
-      <div class="case-content" id="caseContent"></div>
-    </div>
-  </div>
 
 </body>
 </html>
